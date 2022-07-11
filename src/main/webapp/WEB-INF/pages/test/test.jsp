@@ -10,6 +10,7 @@
 <title>Pizza Pit - La vraie pizza au feu de bois</title>
 </head>
 <body>
+
 	<div class="container-fluid">
 		<%@ include file="../../../resources/structure/Entete.jsp"%>
 		<div class="hCar">
