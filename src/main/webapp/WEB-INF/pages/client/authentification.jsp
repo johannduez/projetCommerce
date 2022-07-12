@@ -29,7 +29,7 @@ pageEncoding="ISO-8859-1"%>
 						<label class="form-check-label" for="souvenir"><spring:message code="client.inscription.rappel"></spring:message></label>
 					</div>
 					<div class="form-check authentification d-flex justify-content-end">
-						<button type="submit" class="btn btn-success"><spring:message code="client.inscription.connection"></spring:message></button>
+						<button type="submit" class="btn btn-primary"><spring:message code="client.inscription.connection"></spring:message></button>
 					</div>
 				</form>
 

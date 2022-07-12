@@ -43,7 +43,7 @@
 							</div>
 							<div class="prix centre">
 								<c:out value="${tel.tarif}" />
-								€
+								&euro;
 							</div>
 						</div>
 
@@ -78,7 +78,7 @@
 
 							<div class="prix centre">
 								<c:out value="${ordi.tarif}" />
-								€
+								&euro;
 							</div>
 						</div>
 
@@ -112,7 +112,7 @@
 							</div>
 							<div class="prix centre">
 								<c:out value="${electro.tarif}" />
-								€
+								&euro;
 							</div>
 						</div>
 

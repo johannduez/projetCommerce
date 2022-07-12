@@ -53,12 +53,12 @@
 	<div class="d-flex flex-row">
 		<div class="retourPanier">
 			<a href="<c:url value="/commande/panier" />"><input type="button"
-				class="btn btn-success m-1 p-1" name="button"
+				class="btn btn-primary m-1 p-1" name="button"
 				value="<spring:message code="panier.commande.retourpanier"></spring:message>" /></a>
 		</div>
 		<div class="validerCommande">
-			<a href="CommandeValide"><input type="button"
-				class="btn btn-success m-1 p-1" name="button"
+			<a href="<c:url value="/commande/validerpanier" />"><input type="button"
+				class="btn btn-primary m-1 p-1" name="button"
 				value="<spring:message code="panier.commande.valider"></spring:message>" /></a>
 		</div>
 	</div>

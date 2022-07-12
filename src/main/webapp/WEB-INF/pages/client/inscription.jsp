@@ -44,7 +44,7 @@ pageEncoding="ISO-8859-1"%>
 						<form:errors path="adresse"/>
 					</div> 
 					<div class="d-flex justify-content-end">
-						<button type="submit" class="btn btn-success"><spring:message code="client.inscription.valider"></spring:message></button>
+						<button type="submit" class="btn btn-primary"><spring:message code="client.inscription.valider"></spring:message></button>
 					</div>
 				</form:form>
 
