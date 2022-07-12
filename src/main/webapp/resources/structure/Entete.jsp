@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="entete">
 	<div class="imageEntete">
@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" href="carte">Nos produits</a>
+          <a class="nav-link active text-white" aria-current="page" href="<c:url value="/article/magasin"/>">Nos produits</a>
         </li>
          <c:if test="${empty client}">
 	        <li class="nav-item">
@@ -36,7 +36,7 @@
 	          <a class="nav-link text-white" href="listecommande">Commandes</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link text-white" href="deconnexion">DÃ©connexion</a>
+	          <a class="nav-link text-white" href="deconnexion">Déconnexion</a>
 	        </li>
         </c:if>
           
