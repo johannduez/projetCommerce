@@ -30,7 +30,7 @@
         </c:if>
         <c:if test="${!empty client}">
 	        <li class="nav-item">
-	          <a class="nav-link text-white" href="articles">Choix des articles</a>
+	          <a class="nav-link text-white" href="<c:url value="/article/magasin" />">Choix des articles</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link text-white" href="listecommande">Commandes</a>

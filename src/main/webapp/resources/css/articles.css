@@ -1,0 +1,34 @@
+.articles{
+  display: flex;
+  flex-direction:column ;
+  align-items: center;
+}
+.selection{
+	margin-left: 2%;
+	margin-top:2%;
+}
+
+.ligne{
+	display: flex;
+  flex-direction:row ;
+  align-items:baseline ;
+}
+
+.lignepadding{
+   margin-left: 2%;
+   margin-right: 2%;
+   margin-top: 2%;
+   margin-bottom: 2%;
+}
+
+.viderPanier{
+	 margin-top: 3%;
+}
+
+.validerPanier{
+	margin-top: 3%;
+	margin-left: 3%;
+	margin-right: 3%;
+	display: flex; 
+	justify-content: flex-end;
+}
