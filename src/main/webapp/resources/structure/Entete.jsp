@@ -25,7 +25,7 @@
 	          <a class="nav-link text-white" href="http://localhost:8080/projetCommerce/client/inscription">Inscription</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link text-white" href="authentification">Authentification</a>
+	          <a class="nav-link text-white" href="http://localhost:8080/projetCommerce/client/authentification">Authentification</a>
 	        </li>
         </c:if>
         <c:if test="${!empty client}">

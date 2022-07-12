@@ -45,4 +45,9 @@ public class ClientController {
 		clientRepository.save(client);
 		return "redirect:/accueil/accueil";
 	}
+	
+	@GetMapping("/authentification")
+	public ModelAndView connection(){
+		return new ModelAndView("/client/authentification","client", new Client());
+	}
 }
