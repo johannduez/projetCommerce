@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <footer class="mt-4 pt-4 ">
     <div class="container border-top">
@@ -9,7 +9,7 @@
                 <small class="d-block text-muted">&copy 2022</small>
             </div>
             <div class="col-6 col-md">
-                <h5>CatÃ©gories</h5>
+                <h5>Catégories</h5>
                 <ul class="list-unstyled">
                     <li><a href="#" class="text-muted">Telephone</a></li>
                     <li><a href="#" class="text-muted">Ordinateur</a></li>
@@ -18,8 +18,8 @@
             </div>
             <div class="col-6 col-md">
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-muted">Mentions lÃ©gales</a></li>
-                    <li><a href="#" class="text-muted">Politique de confidentialitÃ©</a></li>
+                    <li><a href="#" class="text-muted">Mentions légales</a></li>
+                    <li><a href="#" class="text-muted">Politique de confidentialité</a></li>
                     <li><a href="#" class="text-muted">Plan du site</a></li>
                 </ul>
             </div>

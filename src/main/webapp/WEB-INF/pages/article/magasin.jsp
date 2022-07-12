@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -53,31 +53,31 @@
 
 			</div>
 			<div class="cartetitre liste">
-				<h5>Nos plats</h5>
+				<h5><spring:message code="magasin.list.ordinateur"></spring:message></h5>
 
 			</div>
 			<div class="liste">
-				<c:forEach var="plat" items="${plats }">
+				<c:forEach var="ordi" items="${ordinateur }">
 
 					<div class="article col-2">
 						<div class="zoom-image">
-							<img src="<c:out value="${plat.image}"/>"
+							<img src="<c:url value="${ordi.image}"/>"
 								class="rounded mx-auto d-block" alt="...">
 						</div>
 						<div>
 							<div class="centre">
 								<a class="text-decoration-none" href="#"
-									onclick="toggle('<c:out value="${plat.id}" />')"><i> <c:out
-											value="${plat.nom}" /></i></a>
+									onclick="toggle('<c:out value="${ordi.id}" />')"><i> <c:out
+											value="${ordi.nom}" /></i></a>
 								<!--  <i> <c:out value="${entree.nom}" /></i>-->
 							</div>
 							<div style="visibility: hidden; height: 0;"
-								id="<c:out value="${plat.id}" />" class="centre desciption">
-								<c:out value="${plat.description}" />
+								id="<c:out value="${ordi.id}" />" class="centre desciption">
+								<c:out value="${ordi.description}" />
 							</div>
 
 							<div class="prix centre">
-								<c:out value="${plat.tarif}" />
+								<c:out value="${ordi.tarif}" />
 								€
 							</div>
 						</div>
@@ -88,30 +88,30 @@
 
 			</div>
 			<div class="cartetitre liste">
-				<h5>Nos desserts</h5>
+				<h5><spring:message code="magasin.list.electromenager"></spring:message></h5>
 			</div>
 			<div class="liste">
-				<c:forEach var="dessert" items="${desserts }">
+				<c:forEach var="electro" items="${electromenager }">
 
 					<div class="article col-2">
 						<div class="zoom-image">
-							<img src="<c:out value="${dessert.image}"/>"
+							<img src="<c:url value="${electro.image}"/>"
 								class="rounded mx-auto d-block" alt="...">
 						</div>
 						<div>
 							<div class="centre">
 								<a class="text-decoration-none" href="#"
-									onclick="toggle('<c:out value="${dessert.id}" />')"><i>
-										<c:out value="${dessert.nom}" />
+									onclick="toggle('<c:out value="${electro.id}" />')"><i>
+										<c:out value="${electro.nom}" />
 								</i></a>
 								<!--  <i> <c:out value="${entree.nom}" /></i>-->
 							</div>
 							<div style="visibility: hidden; height: 0;"
-								id="<c:out value="${dessert.id}" />" class="centre desciption">
-								<c:out value="${dessert.description}" />
+								id="<c:out value="${electro.id}" />" class="centre desciption">
+								<c:out value="${electro.description}" />
 							</div>
 							<div class="prix centre">
-								<c:out value="${dessert.tarif}" />
+								<c:out value="${electro.tarif}" />
 								€
 							</div>
 						</div>
