@@ -5,15 +5,15 @@
     <div class="container border-top">
         <div class="row">
             <div class="col-12 col-md">
-                <h5>Pizza Pit</h5>
+                <h5>E-Lectronique</h5>
                 <small class="d-block text-muted">&copy 2022</small>
             </div>
             <div class="col-6 col-md">
                 <h5>Catégories</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-muted">Entrées</a></li>
-                    <li><a href="#" class="text-muted">Plats</a></li>
-                    <li><a href="#" class="text-muted">Desserts</a></li>
+                    <li><a href="#" class="text-muted">Telephone</a></li>
+                    <li><a href="#" class="text-muted">Ordinateur</a></li>
+                    <li><a href="#" class="text-muted">Electromenager</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">
@@ -33,10 +33,10 @@
 	        	<span class="m-1">04 90 42 26 46</span>
 	        </div>
     </div>
-    <div class="container-fluid bg-success">
+    <div class="container-fluid" style="background-color: #e3f2fd;">
         <div class="row">
             <div class="col">
-                <p class="text-center text-white">&copy 2022</p>
+                <p class="text-center">&copy 2022</p>
             </div>
         </div>
     </div>

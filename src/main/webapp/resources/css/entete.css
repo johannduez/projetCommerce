@@ -4,10 +4,10 @@ display: flex;
  }
 .hCar{
 	overflow:hidden;
-	height: 600px;
+	height: 550px;
 }
 .carousel img {
-  max-height: 600px;
+  max-height: 550px;
 }
 .alert{ 
 	padding-top: 2%;
@@ -16,7 +16,7 @@ display: flex;
 	padding-right: 2%;
 }
 .imageEntete{
-	background-image: url("https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-e-commerce-taobao-food-promotion-banner-image_161865.jpg");
+	background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20220215/pngtree-blue-gradient-e-commerce-banner-background-image_923895.jpg);
 	background-repeat: no-repeat, repeat;
 	background-size: cover;
 	background-position: center;
