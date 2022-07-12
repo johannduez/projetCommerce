@@ -1,16 +1,33 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Version;
+
+@Entity
 public class Article {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String description;
 	private double tarif;
 	private String image;
 	private String categorie;
+	@OneToMany(mappedBy = "article")
+	private Collection<LigneCommande> albums = new ArrayList<LigneCommande>();
+	@Version
+	private int version;
 
-	public Article(int id, String nom, String description, double tarif, String image, String categorie) {
+	public Article(String nom, String description, double tarif, String image, String categorie) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.description = description;
 		this.tarif = tarif;
@@ -68,6 +85,22 @@ public class Article {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Collection<LigneCommande> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(Collection<LigneCommande> albums) {
+		this.albums = albums;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
