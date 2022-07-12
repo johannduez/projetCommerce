@@ -9,6 +9,6 @@ public class AccueilController {
 
 	@RequestMapping("/accueil")
 	public String accueil(){
-		return "/test/pageVierge";
+		return "/accueil/accueil";
 	}
 }
