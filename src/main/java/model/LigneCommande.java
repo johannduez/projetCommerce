@@ -39,7 +39,9 @@ public class LigneCommande {
 	}
 
 	public LigneCommande() {
+		
 		super();
+		article=new Article();
 	}
 
 	public int getQuantite() {
