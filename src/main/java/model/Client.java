@@ -8,13 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Client {
 	@Id
 	private int id;
+	@NotEmpty
 	private String password;
+	@NotEmpty
 	private String nom;
+	@NotEmpty
 	private String prenom;
+	@NotEmpty
 	private String adresse;
 	@OneToMany(mappedBy = "client")
 	private Collection<Commande> commandes = new ArrayList<Commande>();
@@ -28,6 +35,7 @@ public class Client {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
+		this.version = 0;
 	}
 
 	public Client() {
