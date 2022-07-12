@@ -1,7 +1,11 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
 @Entity
@@ -12,8 +16,11 @@ public class Client {
 	private String nom;
 	private String prenom;
 	private String adresse;
+	@OneToMany(mappedBy = "client")
+	private Collection<Commande> commandes = new ArrayList<Commande>();
 	@Version
 	private int version;
+
 	public Client(int id, String password, String nom, String prenom, String adresse) {
 		super();
 		this.id = id;
@@ -65,6 +72,22 @@ public class Client {
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public Collection<Commande> getCommandes() {
+		return commandes;
+	}
+
+	public void setCommandes(Collection<Commande> commandes) {
+		this.commandes = commandes;
 	}
 
 	@Override
