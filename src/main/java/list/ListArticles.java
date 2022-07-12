@@ -68,16 +68,16 @@ public class ListArticles implements ServletContextListener {
 //		Article art12=new Article("Lave-vaisselle THOMSON ENCASTRABLE", "Encastrable - Largeur 60 cm (14 couverts) - 44dB", 399, "/resources/img/electro4.jpg", "Electroménager");
 //		artRepository.save(art12);
 		
-		List<Article> articles = artRepository.findAll();
-		arg0.getServletContext().setAttribute("articles", articles);
+//		List<Article> articles = artRepository.findAll();
+//		arg0.getServletContext().setAttribute("articles", articles);
 
-		List<Article> ordinateur = artRepository.findByCategorie("Ordinateur");
-		List<Article> telephone = artRepository.findByCategorie("Téléphone");
-
-		List<Article> electromenager = artRepository.findByCategorie("Electroménager");
-		arg0.getServletContext().setAttribute("ordinateur", ordinateur);
-		arg0.getServletContext().setAttribute("telephone", telephone);
-		arg0.getServletContext().setAttribute("electromenager", electromenager);
+//		List<Article> ordinateur = artRepository.findByCategorie("Ordinateur");
+//		List<Article> telephone = artRepository.findByCategorie("Téléphone");
+//
+//		List<Article> electromenager = artRepository.findByCategorie("Electroménager");
+//		arg0.getServletContext().setAttribute("ordinateur", ordinateur);
+//		arg0.getServletContext().setAttribute("telephone", telephone);
+//		arg0.getServletContext().setAttribute("electromenager", electromenager);
 
 		ctx.close();
 	}
