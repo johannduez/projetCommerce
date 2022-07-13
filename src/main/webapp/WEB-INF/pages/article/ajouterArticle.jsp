@@ -16,35 +16,35 @@ pageEncoding="ISO-8859-1"%>
 
 			<form:form method="POST" modelAttribute="article">
 				<div class="form-group mb-2 pb-2">
-					<form:label path="nom">Nom:</form:label> 
+					<form:label path="nom"><spring:message code="client.inscription.nom"></spring:message></form:label> 
 					<form:input path="nom" type="text" class="form-control" placeholder="Nom" maxlength="45"/>
 					<form:errors path="nom" cssClass="text-danger"/>
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<form:label path="description">Description</form:label> 
+					<form:label path="description"><spring:message code="article.liste.description"></spring:message></form:label> 
 					<form:input path="description" type="text" class="form-control" placeholder="Description" maxlength="250"/>
 					<form:errors path="description" cssClass="text-danger"/>
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<form:label path="tarif">Tarif</form:label> 
+					<form:label path="tarif"><spring:message code="article.liste.tarif"></spring:message></form:label> 
 					<form:input path="tarif" type="number" class="form-control" placeholder="Tarif" maxlength="45"/>
 					<form:errors path="tarif" cssClass="text-danger"/>
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<form:label path="image">Image</form:label> 
+					<form:label path="image"><spring:message code="article.liste.image"></spring:message></form:label> 
 					<form:input path="image" type="text" class="form-control" placeholder="/resources/img/xxx.jpg" maxlength="250"/>
 					<form:errors path="image" cssClass="text-danger"/>
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<form:label path="categorie">Catégorie</form:label> 
+					<form:label path="categorie"><spring:message code="article.liste.categorie"></spring:message></form:label> 
 					<form:select path="categorie" class="form-control" aria-label="Default select example">
-						<option value="Téléphone">Téléphone</option>
-						<option value="Ordinateur">Ordinateur</option>
-						<option value="Electroménager">Electroménager</option>
+						<option value="Téléphone"><spring:message code="article.modif.telephone"></spring:message></option>
+						<option value="Ordinateur"><spring:message code="article.modif.ordinateur"></spring:message></option>
+						<option value="Electroménager"><spring:message code="article.modif.electromenager"></spring:message></option>
 					</form:select>
 					<form:errors path="categorie" cssClass="text-danger"/>
 				</div>
-				<button type="submit" class="btn btn-success">Ajouter</button>
+				<button type="submit" class="btn btn-success"><spring:message code="article.liste.ajouter"></spring:message></button>
 			</form:form>
 
 		</div>
