@@ -57,13 +57,6 @@ pageEncoding="ISO-8859-1"%>
 					</p>
 				</c:if>
 			</div>
-			<div class="col-6 d-flex justify-content-center">
-				<c:if test="${!empty Message2 }">
-					<p class="alert alert-primary col-4">
-						<c:out value="${Message2 }"></c:out>
-					</p>
-				</c:if>
-			</div>
 
 		</div>
 		<%@ include file="../../../resources/structure/footer.jsp"%>

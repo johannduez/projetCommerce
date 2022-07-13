@@ -8,4 +8,5 @@ import model.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	public List<Article> findByCategorie(String categorie);
+	public Article findByNom(String nom);
 }

@@ -10,16 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotEmpty
 	private String nom;
+	@NotEmpty
 	private String description;
+	@NotNull
 	private double tarif;
+	@NotEmpty
 	private String image;
+	@NotEmpty
 	private String categorie;
 	@OneToMany(mappedBy = "article")
 	private Collection<LigneCommande> albums = new ArrayList<LigneCommande>();
