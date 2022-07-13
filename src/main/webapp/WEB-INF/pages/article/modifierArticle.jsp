@@ -112,7 +112,7 @@
 				</div>
 				<div class="modifsup">
 					<button type="submit" class="btn btn-success">Modifier</button>
-					<a href="supprimerarticle?id=<c:out value="${article.id}"/>"><input
+					<a href="<c:url value="/article/supprimer"/>?id=<c:out value="${article.id}"/>"><input
 						type="button" class="btn btn-success" name="button"
 						value="Supprimer" /></a>
 				</div>

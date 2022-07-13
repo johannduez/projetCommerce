@@ -114,11 +114,18 @@ public class ArticleController {
 		return new ModelAndView("/article/modifierArticle", "article", article);
 	}
 
-	@PostMapping("/modifier") // .../m3?nom=toto
+	@PostMapping("/modifier") 
 	public String modifier(@RequestParam(name = "id", defaultValue = "1") int id,
 			@ModelAttribute(name = "article") Article article) {
 		artRepository.save(article);
 
+		return "redirect:/article/liste";
+	}
+
+	@RequestMapping("/supprimer") 
+	public String supprimer(@RequestParam(name = "id", defaultValue = "1") int id) {
+		Article article = artRepository.findById(id).get();
+		artRepository.delete(article);
 		return "redirect:/article/liste";
 	}
 	
@@ -142,6 +149,7 @@ public class ArticleController {
 			model.addAttribute("notif", "Nom de cette article deja existant");
 			return "/article/ajouterArticle";
 		}
+
 	}
 
 }

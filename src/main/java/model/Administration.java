@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Version;
 
 @Entity
-public class Admin {
+public class Administration {
 	@Id
 	private int login;
 	private String password;
@@ -13,14 +13,14 @@ public class Admin {
 	@Version
 	private int version;
 
-	public Admin(int login, String password, int actif) {
+	public Administration(int login, String password, int actif) {
 		super();
 		this.login = login;
 		this.password = password;
 		this.actif = actif;
 	}
 
-	public Admin() {
+	public Administration() {
 		super();
 	}
 
