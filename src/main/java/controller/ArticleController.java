@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import model.Article;
 import repo.ArticleRepository;
@@ -55,5 +56,17 @@ public class ArticleController {
 		
 		
 		return "article/magasin";
+	}
+	
+	@RequestMapping("/liste")
+	public String liste( Model model) {
+		List<Article> liste = artRepository.findAll();
+		model.addAttribute("articles", liste);
+		return "article/listeArticle";
+	}
+	@RequestMapping("/modifier") // .../m3?nom=toto
+	public String modifier(@RequestParam(name="id", defaultValue="1") int id, Model model) {
+		model.addAttribute("article", artRepository.findById(id));
+		return "/article/modifierArticle";
 	}
 }

@@ -35,7 +35,7 @@
 	          <a class="nav-link text-white" href="<c:url value="/commande/panier" />"><spring:message code="entete.commande.choix"></spring:message></a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link text-white" href="deconnexion"><spring:message code="entete.commande.deconnexion"></spring:message></a>
+	          <a class="nav-link text-white" href="<c:url value="/client/deconnexion" />"><spring:message code="entete.commande.deconnexion"></spring:message></a>
 	        </li>
         </c:if>
           
@@ -52,7 +52,7 @@
 	          <a class="dropdown-item" href="ajouterarticle"><spring:message code="entete.commande.ajoutproduit"></spring:message></a>
 	          <a class="dropdown-item" href="modifierArticle"><spring:message code="entete.commande.modifproduit"></spring:message></a>
 	          <div class="dropdown-divider"></div>
-		        <a class="dropdown-item" href="listeArticle"><spring:message code="entete.commande.produits"></spring:message></a>
+		        <a class="dropdown-item" href="<c:url value="/article/liste" />"><spring:message code="entete.commande.produits"></spring:message></a>
 		   	 </c:if>
 	        </div>
 	      </li>

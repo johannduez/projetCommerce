@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Client;
@@ -60,7 +61,13 @@ public class ClientController {
 	public ModelAndView connection(){
 		return new ModelAndView("/client/authentification","client", new Client());
 	}
-	
+
+	@GetMapping("/deconnexion")
+	public String deconnexion(HttpSession session){
+		session.invalidate();
+		return "redirect:/accueil/accueil";
+	}
+
 	@PostMapping("/authentification")
 	public String connection(@ModelAttribute(name = "client") Client client, Model model, HttpSession session) throws ClassNotFoundException, SQLException{
 
@@ -77,4 +84,5 @@ public class ClientController {
 			return "redirect:/accueil/accueil";
 		}
 	}
+
 }
