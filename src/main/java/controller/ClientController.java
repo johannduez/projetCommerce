@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -41,12 +42,19 @@ public class ClientController {
 	}
 	
 	@PostMapping("/inscription")
-	public String inscription(@Valid @ModelAttribute(name = "client") Client client,BindingResult br) throws ClassNotFoundException, SQLException{
+	public String inscription(Model model, @Valid @ModelAttribute(name = "client") Client client,BindingResult br) throws ClassNotFoundException, SQLException{
 		if (br.hasErrors())
             return "client/inscription";
 		
-		clientRepository.save(client);
-		return "redirect:/accueil/accueil";
+		Optional<Client> c = clientRepository.findById(client.getId());
+		System.out.println(c);
+		if (!c.isPresent()){
+			clientRepository.save(client);
+			return "redirect:/client/authentification";
+		} else {
+			model.addAttribute("notif", "Id deja existant");
+			return "/client/inscription";
+		}
 	}
 	
 	@GetMapping("/authentification")
@@ -75,7 +83,6 @@ public class ClientController {
 			
 			return "redirect:/accueil/accueil";
 		}
-		
 	}
 
 }

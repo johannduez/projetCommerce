@@ -21,27 +21,27 @@ pageEncoding="ISO-8859-1"%>
 				 	<div class="form-group mb-2 pb-2">
 						<form:label path="id"><spring:message code="client.inscription.id"></spring:message></form:label> 
 						<form:input type="number" class="form-control" path="id" aria-describedby="emailHelp" placeholder="1" step="1" min="0"/>
-						<form:errors path="id"/>
+						<form:errors path="id" cssClass="text-danger"/>
 					</div>
 					<div class="form-group mb-2 pb-2">
 						<form:label path="password"><spring:message code="client.inscription.password"></spring:message></form:label> 
 						<form:input type="text" class="form-control" path="password" placeholder="12345" maxlength="45"/>
-						<form:errors path="password"/>
+						<form:errors path="password" cssClass="text-danger"/>
 					</div>
 					<div class="form-group mb-2 pb-2">
 						<form:label path="nom"><spring:message code="client.inscription.nom"></spring:message></form:label> 
 						<form:input type="text" class="form-control" path="nom" placeholder="Dupond" maxlength="45"/>
-						<form:errors path="nom"/>
+						<form:errors path="nom" cssClass="text-danger"/>
 					</div>
 					<div class="form-group mb-2 pb-2">
 						<form:label path="prenom"><spring:message code="client.inscription.prenom"></spring:message></form:label> 
 						<form:input type="text" class="form-control" path="prenom" placeholder="Toto" maxlength="45"/>
-						<form:errors path="prenom"/>
+						<form:errors path="prenom" cssClass="text-danger"/>
 					</div>
 					<div class="form-group mb-2 pb-2">
 						<form:label path="adresse"><spring:message code="client.inscription.adresse"></spring:message></form:label>
 						<form:input type="text" class="form-control" path="adresse" placeholder="1 avenue de la Paix, Paris" maxlength="250"/>
-						<form:errors path="adresse"/>
+						<form:errors path="adresse" cssClass="text-danger"/>
 					</div> 
 					<div class="d-flex justify-content-end">
 						<button type="submit" class="btn btn-primary"><spring:message code="client.inscription.valider"></spring:message></button>
@@ -51,9 +51,9 @@ pageEncoding="ISO-8859-1"%>
 			</div>
 
 			<div class="col-6 d-flex justify-content-center">
-				<c:if test="${!empty Message }">
+				<c:if test="${!empty notif }">
 					<p class="alert alert-danger col-4">
-						<c:out value="${Message }"></c:out>
+						<c:out value="${notif }"></c:out>
 					</p>
 				</c:if>
 			</div>

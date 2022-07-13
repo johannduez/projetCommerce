@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -14,21 +15,22 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class Client {
 	@Id
-	private int id;
-	@NotEmpty
+	@NotNull(message= "Id ne peut pas etre vide")
+	private Integer id;
+	@Length(min=3, message="Il faut au moins 3 caractères")
 	private String password;
-	@NotEmpty
+	@NotEmpty(message= "Nom ne peut pas etre vide")
 	private String nom;
-	@NotEmpty
+	@NotEmpty(message= "Prenom ne peut pas etre vide")
 	private String prenom;
-	@NotEmpty
+	@NotEmpty(message= "Adresse ne peut pas etre vide")
 	private String adresse;
 	@OneToMany(mappedBy = "client")
 	private Collection<Commande> commandes = new ArrayList<Commande>();
 	@Version
 	private int version;
 
-	public Client(int id, String password, String nom, String prenom, String adresse) {
+	public Client(Integer id, String password, String nom, String prenom, String adresse) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -42,11 +44,11 @@ public class Client {
 		super();
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
