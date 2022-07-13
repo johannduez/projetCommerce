@@ -5,7 +5,7 @@ function getContextPath() {
 function selectionCombo(){
 	var elt = document.querySelector('select');
 	elt.addEventListener('change', function () {
-		document.location.href=getContextPath()+"/modifierArticle?id="+this.value;
+		document.location.href=getContextPath()+"/article/modifierArticle?id="+this.value;
 	//	document.location.href="/projetPizza/modifierArticle?id="+this.value;
 	})
 }

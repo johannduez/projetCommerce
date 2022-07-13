@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@ include file="../../../resources/structure/link.jsp"%>
-<link rel="stylesheet" href="css/modifierArticle.css">
-<script src="js/modifier.js"></script>
+<script src="<c:url value="/resources/js/modifier.js" />"></script>
+<link href="<c:url value="/resources/css/modifierArticle.css" />"
+	rel="stylesheet">
+
 <title>Insert title here</title>
 </head>
 <body onload="selectionCombo()">
@@ -14,11 +18,13 @@
 	<div class="d-flex flex-column align-items-center mt-4">
 		<div class="col-4 authentification">
 
-			<form method="POST" enctype="multipart/form-data">
+			<form:form action="" method="POST" modelAttribute="article">
+				<!-- enctype="multipart/form-data" -->
 				<div class="form-group mb-2 pb-2">
-					<label for="id">Identifiant:</label> <select
+					<label for="id"><spring:message
+							code="article.liste.identifiant"></spring:message>:</label> <select
 						class="form-control col-3" aria-label=".form-select-lg example"
-						id="idIdentifiant" name="idIdentifiant">
+						id="idIdentifiant" name="id">
 						<c:forEach var="art" items="${articles }">
 							<c:if test="${art.id != article.id}">
 								<option value="${art.id}">${art.id}</option>
@@ -29,63 +35,80 @@
 						</c:forEach>
 
 					</select>
-					<!--  <input
-					type="number" class="form-control" id="id"
-					name="id" aria-describedby="emailHelp" placeholder="Identifiant"  step="1" min="0">-->
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<label for="nom">Nom:</label> <input type="text"
-						class="form-control" name="nom" id="nom" placeholder="Nom"
+					<label for="nom"><spring:message code="article.liste.nom"></spring:message>:</label>
+					<input type="text" class="form-control" name="nom" id="nom"
+						placeholder="<spring:message code="article.liste.nom"></spring:message>"
 						maxlength="45" value="<c:out value="${article.nom}"/>">
+
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<label for="description">Description</label> <input type="text"
-						class="form-control" name="description" id="description"
-						placeholder="Description" maxlength="250"
-						value="<c:out value="${article.description}"/>">
+					<label for="description"><spring:message
+							code="article.liste.description"></spring:message></label> <input
+						type="text" class="form-control" name="description"
+						id="description"
+						placeholder="<spring:message code="article.liste.description"></spring:message>"
+						maxlength="250" value="<c:out value="${article.description}"/>">
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<label for="tarif">Tarif</label> <input type="number"
-						class="form-control" name="tarif" id="tarif" placeholder="Tarif"
+					<label for="tarif"><spring:message
+							code="article.liste.tarif"></spring:message></label> <input type="number"
+						class="form-control" name="tarif" id="tarif"
+						placeholder="<spring:message code="article.liste.tarif"></spring:message>"
 						maxlength="45" value="<c:out value="${article.tarif}"/>">
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<label for="file">Image</label>
+					<label for="file"><spring:message
+							code="article.liste.image"></spring:message></label>
 					<div class="article col-6">
 						<div class="zoom-image">
-							<img src="<c:out value="${article.image}"/>"
+							<img src="<c:url value="${article.image}"/>"
 								class="rounded mx-auto d-block" alt="...">
 						</div>
 					</div>
 
-					<input type="file" name="file" id="file"
-						accept="image/png, image/jpeg">
-					</textarea>
+					<input type="text" name="image" id="image"
+						class="form-control col-6"
+						value="<c:out value="${article.image}"/>" />
+
 				</div>
+
+
 				<div class="form-group mb-2 pb-2">
-					<label for="categorie">Cat√©gorie</label> <select
+					<label for="categorie"><spring:message
+							code="article.liste.categorie"></spring:message></label> <select
 						class="form-control" aria-label="Default select example"
 						name="categorie" id="categorie">
-						<c:if test="${'entree' != article.categorie}">
-							<option value="entree">Entr√©e</option>
+						<c:if test="${'TÈlÈphone' != article.categorie}">
+							<option value="TÈlÈphone"><spring:message
+									code="article.modif.telephone"></spring:message></option>
 						</c:if>
-						<c:if test="${'entree' == article.categorie}">
-							<option value="entree" selected>Entr√©e</option>
+						<c:if test="${'TÈlÈphone' == article.categorie}">
+							<option value="TÈlÈphone" selected><spring:message
+									code="article.modif.telephone"></spring:message></option>
 						</c:if>
-						<c:if test="${'plat' != article.categorie}">
-							<option value="plat">Plat</option>
+						<c:if test="${'Ordinateur' != article.categorie}">
+							<option value="Ordinateur"><spring:message
+									code="article.modif.ordinateur"></spring:message></option>
 						</c:if>
-						<c:if test="${'plat' == article.categorie}">
-							<option value="plat" selected>Plat</option>
+						<c:if test="${'Ordinateur' == article.categorie}">
+							<option value="Ordinateur" selected><spring:message
+									code="article.modif.ordinateur"></spring:message></option>
 						</c:if>
-						<c:if test="${'dessert' != article.categorie}">
-							<option value="dessert">Dessert</option>
+						<c:if test="${'ElectromÈnager' != article.categorie}">
+							<option value="ElectromÈnager"><spring:message
+									code="article.modif.electomenager"></spring:message></option>
 						</c:if>
-						<c:if test="${'dessert' == article.categorie}">
-							<option value="dessert" selected>Dessert</option>
+						<c:if test="${'ElectromÈnager' == article.categorie}">
+							<option value="ElectromÈnager" selected><spring:message
+									code="article.modif.electomenager"></spring:message></option>
 						</c:if>
 
 					</select>
+				</div>
+				<div>
+					<input type="hidden" name="version" value="${article.version} ">
 				</div>
 				<div class="modifsup">
 					<button type="submit" class="btn btn-success">Modifier</button>
@@ -93,7 +116,7 @@
 						type="button" class="btn btn-success" name="button"
 						value="Supprimer" /></a>
 				</div>
-			</form>
+			</form:form>
 
 		</div>
 
