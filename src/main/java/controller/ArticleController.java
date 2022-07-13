@@ -127,7 +127,7 @@ public class ArticleController {
 		Article article = artRepository.findById(id).get();
 		artRepository.delete(article);
 		return "redirect:/article/liste";
-
+	}
 	
 	@GetMapping("/ajouter")
 	public ModelAndView inscription(Model model){
