@@ -7,7 +7,7 @@
 <html>
 <head>
 <%@ include file="../../../resources/structure/link.jsp"%>
-<title>Pizza Pit - La vraie pizza au feu de bois</title>
+<title>E-lectronique</title>
 </head>
 <body>
 	<div class="container-fluid">

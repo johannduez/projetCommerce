@@ -7,7 +7,7 @@
 	<div class="imageEntete">
 		<div class="d-flex flex-column justify-content-center align-items-center">
 			<h1>E-Lectronique</h1><br>
-			<h3>L'avenir accessible pour tous </h3>
+			<h3><spring:message code="entete.commande.titre"></spring:message></h3>
 		</div>
 	</div>
 	<div class="navbarContainer">
