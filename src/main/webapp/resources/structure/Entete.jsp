@@ -60,7 +60,7 @@
         </c:if>
       </ul>
     </div>
-    <div >
+    <div class="text-white">
   	<c:if test="${!empty commande}">
   	
 <spring:message code="entete.commande.bonjour"></spring:message> <c:out value="${commande.client.prenom }"></c:out> <c:out value="${commande.client.nom }"></c:out> 

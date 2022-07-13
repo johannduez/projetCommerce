@@ -20,17 +20,17 @@
 			<div class=" col-2 m-5">
 				<form:form method="POST" modelAttribute="filtre">
 					<div class="form-group mb-2 pb-2">
-						<form:label path="prixMin">Prix minimum:</form:label>
+						<form:label path="prixMin"><spring:message code="magasin.list.prixminimum"></spring:message></form:label>
 						<form:input path="prixMin" type="number" class="form-control" />
 
 					</div>
 					<div class="form-group mb-2 pb-2">
-						<form:label path="prixMax">Prix maximum:</form:label>
+						<form:label path="prixMax"><spring:message code="magasin.list.prixmaximum"></spring:message></form:label>
 						<form:input path="prixMax" type="number" class="form-control" />
 
 					</div>
 					<div class="form-group mb-2 pb-2">
-						<form:label path="nom">Nom:</form:label>
+						<form:label path="nom"><spring:message code="magasin.list.nom"></spring:message></form:label>
 						<form:input path="nom" type="test" class="form-control"
 							maxlength="45" />
 
