@@ -8,8 +8,7 @@
 <html>
 <head>
 <%@ include file="../../../resources/structure/link.jsp"%>
-<link href="<c:url value="/resources/css/carte.css" />"
-	rel="stylesheet">
+<link href="<c:url value="/resources/css/carte.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/listeCommande.css" />"
 	rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -30,7 +29,9 @@
 			<c:forEach var="article" items="${articles}">
 
 				<tr>
-					<td><c:out value="${article.id }" /></td>
+					<td><a
+						href="<c:url value="/article/modifier"/>?id=<c:out value="${article.id}"/>"><c:out
+								value="${article.id}" /></a></td>
 					<td><c:out value="${article.nom }" /></td>
 					<td><c:out value="${article.description }" /></td>
 					<td><fmt:formatNumber type="number" maxFractionDigits="2"
