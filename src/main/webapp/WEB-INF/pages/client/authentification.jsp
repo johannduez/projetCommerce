@@ -15,7 +15,7 @@ pageEncoding="ISO-8859-1"%>
 		<%@ include file="../../../resources/structure/Entete.jsp"%>
 		<div class="d-flex flex-column align-items-center">
 			<div class="col-4 authentification">
-				<form method="POST">
+				<form:form method="POST" modelAttribute="client">
 					<div class="form-group mb-2 pb-2">
 						<label for="exampleInputEmail1"><spring:message code="client.inscription.id"></spring:message></label> 
 						<input type="number" class="form-control" id="exampleInputEmail1" name="id" aria-describedby="emailHelp" placeholder="Identifiant" value="<c:out value="${id}"/>">
@@ -31,14 +31,14 @@ pageEncoding="ISO-8859-1"%>
 					<div class="form-check authentification d-flex justify-content-end">
 						<button type="submit" class="btn btn-primary"><spring:message code="client.inscription.connection"></spring:message></button>
 					</div>
-				</form>
+				</form:form>
 
 			</div>
 
 			<div class="col-6 d-flex justify-content-center">
-				<c:if test="${!empty Message }">
+				<c:if test="${!empty notification }">
 					<p class="alert alert-danger col-12">
-						<c:out value="${Message }"></c:out>
+						<c:out value="${notification}"></c:out>
 					</p>
 				</c:if>
 
