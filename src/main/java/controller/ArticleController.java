@@ -1,10 +1,16 @@
 package controller;
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +25,14 @@ import repo.ArticleRepository;
 public class ArticleController {
 	@Autowired
 	ArticleRepository artRepository;
+	
+	public ArticleRepository getArtRepository() {
+		return artRepository;
+	}
+
+	public void setArtRepository(ArticleRepository artRepository) {
+		this.artRepository = artRepository;
+	}
 
 	@RequestMapping("/magasin")
 	public String magasin(Model model) {
@@ -107,11 +121,35 @@ public class ArticleController {
 
 		return "redirect:/article/liste";
 	}
+
 	@RequestMapping("/supprimer") 
 	public String supprimer(@RequestParam(name = "id", defaultValue = "1") int id) {
 		Article article = artRepository.findById(id).get();
 		artRepository.delete(article);
 		return "redirect:/article/liste";
+
+	
+	@GetMapping("/ajouter")
+	public ModelAndView inscription(Model model){
+		return new ModelAndView("/article/ajouterArticle","article", new Article());
+	}
+	
+	@PostMapping("/ajouter")
+	public String inscription(Model model, @Valid @ModelAttribute(name = "article") Article article,BindingResult br) throws ClassNotFoundException, SQLException{
+		if (br.hasErrors())
+            return "/article/ajouterArticle";
+	
+		
+		Article a = artRepository.findByNom(article.getNom());
+		
+		if (a == null){
+			artRepository.save(article);
+			return "redirect:/article/liste";
+		} else {
+			model.addAttribute("notif", "Nom de cette article deja existant");
+			return "/article/ajouterArticle";
+		}
+
 	}
 
 }
