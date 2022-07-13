@@ -44,7 +44,7 @@ pageEncoding="ISO-8859-1"%>
 					</form:select>
 					<form:errors path="categorie" cssClass="text-danger"/>
 				</div>
-				<button type="submit" class="btn btn-success">Ajouter</button>
+				<button type="submit" class="btn btn-primary">Ajouter</button>
 			</form:form>
 
 		</div>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Article;
+import model.Filtre;
 import repo.ArticleRepository;
 
 @Controller
@@ -25,7 +26,7 @@ import repo.ArticleRepository;
 public class ArticleController {
 	@Autowired
 	ArticleRepository artRepository;
-	
+
 	public ArticleRepository getArtRepository() {
 		return artRepository;
 	}
@@ -95,6 +96,29 @@ public class ArticleController {
 		model.addAttribute("ordinateur", ordinateur);
 		model.addAttribute("telephone", telephone);
 		model.addAttribute("electromenager", electromenager);
+		model.addAttribute("filtre", new Filtre());
+		return "article/magasin";
+	}
+
+	@PostMapping("/magasin")
+	public String modifier(@ModelAttribute(name = "filtre") Filtre filtre, Model model) {
+		String nom = "%";
+		if (!filtre.getNom().isEmpty() && !filtre.getNom().equals("")) {
+			nom += filtre.getNom() + "%";
+		}
+		double prixMin = filtre.getPrixMin() != null ? filtre.getPrixMin() : 0;
+		double prixMax = filtre.getPrixMax() != null ? filtre.getPrixMax() : 100000000;
+		List<Article> ordinateur = artRepository.findFiltre("Ordinateur", prixMax, prixMin, nom);
+		List<Article> telephone = artRepository.findFiltre("Téléphone", prixMax, prixMin, nom);
+
+		List<Article> electromenager = artRepository.findFiltre("Electroménager", prixMax, prixMin, nom);
+		if (ordinateur.size() > 0)
+			model.addAttribute("ordinateur", ordinateur);
+		if (telephone.size() > 0)
+			model.addAttribute("telephone", telephone);
+		if (electromenager.size() > 0)
+			model.addAttribute("electromenager", electromenager);
+		model.addAttribute("filtre", filtre);
 
 		return "article/magasin";
 	}
@@ -114,7 +138,7 @@ public class ArticleController {
 		return new ModelAndView("/article/modifierArticle", "article", article);
 	}
 
-	@PostMapping("/modifier") 
+	@PostMapping("/modifier")
 	public String modifier(@RequestParam(name = "id", defaultValue = "1") int id,
 			@ModelAttribute(name = "article") Article article) {
 		artRepository.save(article);
@@ -122,27 +146,27 @@ public class ArticleController {
 		return "redirect:/article/liste";
 	}
 
-	@RequestMapping("/supprimer") 
+	@RequestMapping("/supprimer")
 	public String supprimer(@RequestParam(name = "id", defaultValue = "1") int id) {
 		Article article = artRepository.findById(id).get();
 		artRepository.delete(article);
 		return "redirect:/article/liste";
 	}
-	
+
 	@GetMapping("/ajouter")
-	public ModelAndView inscription(Model model){
-		return new ModelAndView("/article/ajouterArticle","article", new Article());
+	public ModelAndView inscription(Model model) {
+		return new ModelAndView("/article/ajouterArticle", "article", new Article());
 	}
-	
+
 	@PostMapping("/ajouter")
-	public String inscription(Model model, @Valid @ModelAttribute(name = "article") Article article,BindingResult br) throws ClassNotFoundException, SQLException{
+	public String inscription(Model model, @Valid @ModelAttribute(name = "article") Article article, BindingResult br)
+			throws ClassNotFoundException, SQLException {
 		if (br.hasErrors())
-            return "/article/ajouterArticle";
-	
-		
+			return "/article/ajouterArticle";
+
 		Article a = artRepository.findByNom(article.getNom());
-		
-		if (a == null){
+
+		if (a == null) {
 			artRepository.save(article);
 			return "redirect:/article/liste";
 		} else {

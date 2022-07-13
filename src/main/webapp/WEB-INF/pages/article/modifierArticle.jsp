@@ -20,7 +20,7 @@
 
 			<form:form action="" method="POST" modelAttribute="article">
 				<!-- enctype="multipart/form-data" -->
-				<div class="form-group mb-2 pb-2">
+				<div class="form-group mb-2 pb-2 mt-5">
 					<label for="id"><spring:message
 							code="article.liste.identifiant"></spring:message>:</label> <select
 						class="form-control col-3" aria-label=".form-select-lg example"
