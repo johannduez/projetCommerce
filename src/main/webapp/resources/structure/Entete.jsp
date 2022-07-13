@@ -41,15 +41,17 @@
           
          <c:if test="${!empty commande}">
 	       <li class="nav-item dropdown">
-	       <c:if test="${empty admininistration}">
+	       
 	        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	          <spring:message code="entete.commande.administration"></spring:message>
 	        </a>
-	        </c:if>
+	        
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	        <c:if test="${empty admininistration}">
 	        	<a class="dropdown-item" href="<c:url value="/admin/authentification" />"><spring:message code="entete.commande.connexionadmin"></spring:message></a>
+	         </c:if>
 	         <c:if test="${!empty admininistration}">
-	          <a class="dropdown-item" href="ajouterarticle"><spring:message code="entete.commande.ajoutproduit"></spring:message></a>
+	          <a class="dropdown-item" href="<c:url value="/article/ajouter"/>"><spring:message code="entete.commande.ajoutproduit"></spring:message></a>
 	          <div class="dropdown-divider"></div>
 		        <a class="dropdown-item" href="<c:url value="/article/liste" />"><spring:message code="entete.commande.produits"></spring:message></a>
 		   	 </c:if>
@@ -59,7 +61,10 @@
       </ul>
     </div>
     <div >
-  	<c:if test="${!empty commande}"><a href="profilUtilisateur" class="text-white"> <spring:message code="entete.commande.bonjour"></spring:message> <c:out value="${commande.client.prenom }"></c:out> <c:out value="${commande.client.nom }"></c:out> </a></c:if>
+  	<c:if test="${!empty commande}">
+  	
+<spring:message code="entete.commande.bonjour"></spring:message> <c:out value="${commande.client.prenom }"></c:out> <c:out value="${commande.client.nom }"></c:out> 
+  </c:if>
      </div>
   </div>
 </nav>

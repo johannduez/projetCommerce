@@ -56,7 +56,7 @@ System.out.println(admininistration);
 			}
 			
 
-			return "redirect:/accueil/accueil";
+			return "redirect:/article/liste";
 		}
 	}
 }
