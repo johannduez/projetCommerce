@@ -6,12 +6,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="https://fontawesome.com/v4.7.0/assets/font-awesome/css/font-awesome.css">
+<link rel="stylesheet"
+	href="https://fontawesome.com/v4.7.0/assets/font-awesome/css/font-awesome.css">
 <%@ include file="../../../resources/structure/link.jsp"%>
 <script src="<c:url value="/resources/js/magasin.js" />"></script>
 <link href="<c:url value="/resources/css/magasin.css" />"
@@ -25,87 +30,97 @@
 		<div class=" d-flex flex-row">
 			<div class=" col-2 m-5">
 				<form:form method="POST" modelAttribute="filtre">
-				
-			<div class="card">
 
-				<!-- <article class="filter-group"> <header class="card-header">
-				<a href="#" data-toggle="collapse" data-target="#collapse_4"
-					aria-expanded="true" class="">
-					<h6 class="title">Catégorie</h6>
-				</a>
-				
-				</header>
-				<div class="filter-content collapse show" id="collapse_2" style="">
-					<div class="card-body">
-						<label class="custom-control custom-checkbox"> <input
-							type="checkbox" checked="" class="custom-control-input">
-							<div class="custom-control-label">Ordinateur</div>
-						</label> <label class="custom-control custom-checkbox"> <input
-							type="checkbox" checked="" class="custom-control-input">
-							<div class="custom-control-label">Téléphone</div>
-						</label> <label class="custom-control custom-checkbox"> <input
-							type="checkbox" checked="" class="custom-control-input">
-							<div class="custom-control-label">Eléctromenager</div>
-						</label>
+					<div class="card">
+
+						<article class="filter-group"> <header
+							class="card-header"> <a href="#" data-toggle="collapse"
+							data-target="#collapse_2" aria-expanded="true" class="">
+							<h6 class="title">Catégorie</h6>
+						</a> </header>
+						<div class="filter-content collapse show" id="collapse_2" style="">
+							<div class="card-body">
+								<label class="custom-control custom-checkbox"> <form:checkbox
+										path="ordinateur"  value="1"
+										class="custom-control-input" />
+									<div class="custom-control-label">Ordinateur</div>
+								</label> <label class="custom-control custom-checkbox"> <form:checkbox
+										path="telephone"  value="1"
+										class="custom-control-input" />
+
+									<div class="custom-control-label">Téléphone</div>
+								</label> <label class="custom-control custom-checkbox"> <form:checkbox
+										path="electromenager"  value="1"
+										class="custom-control-input" />
+
+									<div class="custom-control-label">Eléctromenager</div>
+								</label>
 
 
-					</div>
-					
-				</div>
-				</article> -->
-				<!-- filter-group .// -->
-				<article class="filter-group"> <header class="card-header">
-				<a href="#" data-toggle="collapse" data-target="#collapse_4"
-					aria-expanded="true" class="">
-					<h6 class="title">Nom</h6>
-				</a> </header>
-				<div class="filter-content collapse show" id="collapse_4" style="">
-					<div class="card-body">
-						<!-- <label>Nom:</label> 
+							</div>
+
+						</div>
+						</article>
+						<!-- filter-group .// -->
+						<article class="filter-group"> <header
+							class="card-header"> <a href="#" data-toggle="collapse"
+							data-target="#collapse_4" aria-expanded="true" class="">
+							<h6 class="title">Nom</h6>
+						</a> </header>
+						<div class="filter-content collapse show" id="collapse_4" style="">
+							<div class="card-body">
+								<!-- <label>Nom:</label> 
 						<input type="test" class="form-control"
 							maxlength="45" /> -->
-						<form:label path="nom"><spring:message code="magasin.list.nom"></spring:message></form:label>
-						<form:input path="nom" type="test" class="form-control"
-							maxlength="45" />	
-					</div>
-					<!-- card-body.// -->
-				</div>
-				</article>
-				<!-- filter-group .// -->
-				<article class="filter-group"> <header class="card-header">
-				
-				<h6 class="title">Prix</h6>
-				</header>
-				<div class="filter-content collapse show" id="collapse_3" style="">
-					<div class="card-body">
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<!-- <label>Min</label> 
+								<form:label path="nom">
+									<spring:message code="magasin.list.nom"></spring:message>
+								</form:label>
+								<form:input path="nom" type="test" class="form-control"
+									maxlength="45" />
+							</div>
+							<!-- card-body.// -->
+						</div>
+						</article>
+						<!-- filter-group .// -->
+						<article class="filter-group"> <header
+							class="card-header">
+
+						<h6 class="title">Prix</h6>
+						</header>
+						<div class="filter-content collapse show" id="collapse_3" style="">
+							<div class="card-body">
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<!-- <label>Min</label> 
 								<input class="form-control" placeholder="0"
 									type="number"> -->
-								<form:label path="prixMin"><spring:message code="magasin.list.prixminimum"></spring:message></form:label>
-								<form:input path="prixMin" type="number" class="form-control" />
-							</div>
-							<div class="form-group text-right col-md-6">
-								<!-- <label>Max</label> 
+										<form:label path="prixMin">
+											<spring:message code="magasin.list.prixminimum"></spring:message>
+										</form:label>
+										<form:input path="prixMin" type="number" class="form-control" />
+									</div>
+									<div class="form-group text-right col-md-6">
+										<!-- <label>Max</label> 
 								
 								<input class="form-control"
 									placeholder="100000" type="number"> -->
-									<form:label path="prixMax"><spring:message code="magasin.list.prixmaximum"></spring:message></form:label>
-									<form:input path="prixMax" type="number" class="form-control" />
+										<form:label path="prixMax">
+											<spring:message code="magasin.list.prixmaximum"></spring:message>
+										</form:label>
+										<form:input path="prixMax" type="number" class="form-control" />
+									</div>
+								</div>
+								<!-- form-row.// -->
+								<button type="submit" class="btn btn-block btn-primary">Filtrer</button>
+
 							</div>
+							<!-- card-body.// -->
 						</div>
-						<!-- form-row.// -->
-						<button type="submit" class="btn btn-block btn-primary">Filtrer</button>
-						
+						</article>
+						<!-- filter-group .// -->
+
+
 					</div>
-					<!-- card-body.// -->
-				</div>
-				</article>
-				<!-- filter-group .// -->
-
-
-			</div>
 				</form:form>
 			</div>
 			<div class=" col-10">

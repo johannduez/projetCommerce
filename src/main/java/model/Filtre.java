@@ -11,10 +11,41 @@ public class Filtre {
 	private Double prixMax;
 
 	private String nom;
+	
+	private Integer ordinateur;
 
+	private Integer telephone;
+	
+	private Integer electromenager;
 	public Filtre() {
 		super();
+		ordinateur=1;
+		telephone=1;
+		electromenager=1;
+	}
 
+	public Integer getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(Integer telephone) {
+		this.telephone = telephone;
+	}
+
+	public Integer getElectromenager() {
+		return electromenager;
+	}
+
+	public void setElectromenager(Integer electromenager) {
+		this.electromenager = electromenager;
+	}
+
+	public Integer getOrdinateur() {
+		return ordinateur;
+	}
+
+	public void setOrdinateur(Integer ordinateur) {
+		this.ordinateur = ordinateur;
 	}
 
 	public Double getPrixMin() {
@@ -43,7 +74,9 @@ public class Filtre {
 
 	@Override
 	public String toString() {
-		return "Filtre [prixMin=" + prixMin + ", prixMax=" + prixMax + ", nom=" + nom + "]";
+		return "Filtre [prixMin=" + prixMin + ", prixMax=" + prixMax + ", nom=" + nom + ", ordinateur=" + ordinateur
+				+ ", telephone=" + telephone + ", electromenager=" + electromenager + "]";
 	}
 
+	
 }
