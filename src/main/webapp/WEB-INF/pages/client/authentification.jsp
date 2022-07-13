@@ -18,11 +18,11 @@ pageEncoding="ISO-8859-1"%>
 				<form:form method="POST" modelAttribute="client">
 					<div class="form-group mb-2 pb-2">
 						<label for="exampleInputEmail1"><spring:message code="client.inscription.id"></spring:message></label> 
-						<input type="number" class="form-control" id="exampleInputEmail1" name="id" aria-describedby="emailHelp" placeholder="Identifiant" value="<c:out value="${id}"/>">
+						<input type="number" class="form-control" id="exampleInputEmail1" name="id" aria-describedby="emailHelp" placeholder="Identifiant" value="<c:out value="${cookieID}"/>">
 					</div>
 					<div class="form-group mb-2 pb-2">
 						<label for="exampleInputPassword1"><spring:message code="client.inscription.password"></spring:message></label> 
-						<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Mot de passe" maxlength="45">
+						<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Mot de passe" value='<c:out value="${cookiePassword}"/>' maxlength="45">
 					</div>
 					<div class="form-check mb-2 pb-2">
 						<input class="form-check-input" type="checkbox" value="1" id="souvenir" name="souvenir"> 

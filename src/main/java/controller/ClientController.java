@@ -3,6 +3,8 @@ package controller;
 import java.sql.SQLException;
 import java.util.Optional;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,7 +61,12 @@ public class ClientController {
 	}
 	
 	@GetMapping("/authentification")
-	public ModelAndView connection(){
+	public ModelAndView connection(@CookieValue(value = "id", defaultValue = "") String cookieID, @CookieValue(value = "password", defaultValue = "") String cookiePassword, Model model){
+		
+		if(cookieID != "" && cookiePassword != ""){
+			model.addAttribute("cookieID", cookieID);
+			model.addAttribute("cookiePassword", cookiePassword);
+		}
 		return new ModelAndView("/client/authentification","client", new Client());
 	}
 
@@ -69,10 +77,10 @@ public class ClientController {
 	}
 
 	@PostMapping("/authentification")
-	public String connection(@ModelAttribute(name = "client") Client client, Model model, HttpSession session) throws ClassNotFoundException, SQLException{
+	public String connection(@ModelAttribute(name = "client") Client client, @RequestParam(value="souvenir", required = false) Boolean souvenir,Model model, HttpSession session, HttpServletResponse response) throws ClassNotFoundException, SQLException{
 
 		Client c = clientRepository.findByIdAndPassword(client.getId(),client.getPassword());
-		
+
 		if (c==null){
 			model.addAttribute("notification", "Id ou mot de passe incorrecte");
 			return "/client/authentification";
@@ -80,6 +88,15 @@ public class ClientController {
 			Commande commande = new Commande();
 			commande.setClient(c);
 			session.setAttribute("commande", commande);
+			
+			if(souvenir!=null){
+				Cookie cookieID = new Cookie("id", client.getId().toString());
+				cookieID.setMaxAge(60 * 60 * 24 * 30);
+				response.addCookie(cookieID);
+				Cookie cookiePassword = new Cookie("password", client.getPassword());
+				cookieID.setMaxAge(60 * 60 * 24 * 30);
+				response.addCookie(cookiePassword);
+			}
 			
 			return "redirect:/accueil/accueil";
 		}
