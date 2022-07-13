@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Client;
+import model.Commande;
 import repo.ClientRepository;
 
 @Controller
@@ -52,11 +53,29 @@ public class ClientController {
 	public ModelAndView connection(){
 		return new ModelAndView("/client/authentification","client", new Client());
 	}
+
 	@GetMapping("/deconnexion")
 	public String deconnexion(HttpSession session){
 		session.invalidate();
 		return "redirect:/accueil/accueil";
 	}
 
-	
+	@PostMapping("/authentification")
+	public String connection(@ModelAttribute(name = "client") Client client, Model model, HttpSession session) throws ClassNotFoundException, SQLException{
+
+		Client c = clientRepository.findByIdAndPassword(client.getId(),client.getPassword());
+		
+		if (c==null){
+			model.addAttribute("notification", "Id ou mot de passe incorrecte");
+			return "/client/authentification";
+		} else {
+			Commande commande = new Commande();
+			commande.setClient(c);
+			session.setAttribute("commande", commande);
+			
+			return "redirect:/accueil/accueil";
+		}
+		
+	}
+
 }
