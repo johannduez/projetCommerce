@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Article {
+public class Article implements Comparable<Article>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -115,6 +115,15 @@ public class Article {
 	public String toString() {
 		return "Article [id=" + id + ", nom=" + nom + ", description=" + description + ", tarif=" + tarif + ", image="
 				+ image + ", categorie=" + categorie + "]";
+	}
+
+	@Override
+	public int compareTo(Article arg0) {
+		if (this.tarif > arg0.tarif)
+			return 1;
+		if (this.tarif < arg0.tarif)
+			return -1;
+		return 0;
 	}
 
 }

@@ -98,11 +98,11 @@
 						</c:if>
 						<c:if test="${'Electroménager' != article.categorie}">
 							<option value="Electroménager"><spring:message
-									code="article.modif.electomenager"></spring:message></option>
+									code="article.modif.electromenager"></spring:message></option>
 						</c:if>
 						<c:if test="${'Electroménager' == article.categorie}">
 							<option value="Electroménager" selected><spring:message
-									code="article.modif.electomenager"></spring:message></option>
+									code="article.modif.electromenager"></spring:message></option>
 						</c:if>
 
 					</select>

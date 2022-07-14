@@ -1,12 +1,16 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import form.ArticleForm;
 import model.Article;
 import model.Filtre;
 import repo.ArticleRepository;
@@ -89,10 +94,10 @@ public class ArticleController {
 		// "/resources/img/electro4.jpg", "Electroménager");
 		// artRepository.save(art12);
 
-		List<Article> ordinateur = artRepository.findByCategorie("Ordinateur");
-		List<Article> telephone = artRepository.findByCategorie("Téléphone");
+		List<Article> ordinateur = artRepository.findByCategorieOrderByTarif("Ordinateur");
+		List<Article> telephone = artRepository.findByCategorieOrderByTarif("Téléphone");
 
-		List<Article> electromenager = artRepository.findByCategorie("Electroménager");
+		List<Article> electromenager = artRepository.findByCategorieOrderByTarif("Electroménager");
 		model.addAttribute("ordinateur", ordinateur);
 		model.addAttribute("telephone", telephone);
 		model.addAttribute("electromenager", electromenager);
@@ -106,7 +111,6 @@ public class ArticleController {
 		if (!filtre.getNom().isEmpty() && !filtre.getNom().equals("")) {
 			nom += filtre.getNom() + "%";
 		}
-		System.out.println(filtre);
 		double prixMin = filtre.getPrixMin() != null ? filtre.getPrixMin() : 0;
 		double prixMax = filtre.getPrixMax() != null ? filtre.getPrixMax() : 100000000;
 
@@ -183,6 +187,68 @@ public class ArticleController {
 			return "/article/ajouterArticle";
 		}
 
+	}
+
+	@PostMapping("/list")
+	public ModelAndView listOfArticles(@RequestParam(required = false) Integer page,
+			@ModelAttribute(name = "filtre") Filtre filtre, Model model, HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView("/article/magasin2");
+
+		List<Article> articles = ArticleForm.getListArticles(filtre, artRepository);
+		articles.sort((Article a , Article b) -> a.compareTo(b));
+		session.setAttribute("filtre", filtre);
+		PagedListHolder<Article> pagedListHolder = new PagedListHolder<>(articles);
+		pagedListHolder.setPageSize(8);
+		modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+
+		if (page == null || page < 1 || page > pagedListHolder.getPageCount())
+			page = 1;
+
+		modelAndView.addObject("page", page);
+		if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
+			pagedListHolder.setPage(0);
+			modelAndView.addObject("articles", pagedListHolder.getPageList());
+		} else if (page <= pagedListHolder.getPageCount()) {
+			pagedListHolder.setPage(page - 1);
+			modelAndView.addObject("articles", pagedListHolder.getPageList());
+		}
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/list")
+	public ModelAndView listOfArticles(@RequestParam(required = false) Integer page, HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView("/article/magasin2");
+
+		Filtre filtre = (Filtre) session.getAttribute("filtre");
+		List<Article> articles = new ArrayList<>();
+		if (filtre == null) {
+			modelAndView.addObject("filtre", new Filtre());
+			articles = artRepository.findAll();
+		} else {
+			modelAndView.addObject("filtre", filtre);
+			articles = ArticleForm.getListArticles(filtre, artRepository);
+
+		}
+		articles.sort((Article a , Article b) -> a.compareTo(b));
+		
+		PagedListHolder<Article> pagedListHolder = new PagedListHolder<>(articles);
+		pagedListHolder.setPageSize(8);
+		modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+
+		if (page == null || page < 1 || page > pagedListHolder.getPageCount())
+			page = 1;
+
+		modelAndView.addObject("page", page);
+		if (page == null || page < 1 || page > pagedListHolder.getPageCount()) {
+			pagedListHolder.setPage(0);
+			modelAndView.addObject("articles", pagedListHolder.getPageList());
+		} else if (page <= pagedListHolder.getPageCount()) {
+			pagedListHolder.setPage(page - 1);
+			modelAndView.addObject("articles", pagedListHolder.getPageList());
+		}
+
+		return modelAndView;
 	}
 
 }
