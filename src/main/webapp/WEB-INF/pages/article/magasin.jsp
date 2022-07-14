@@ -36,24 +36,24 @@
 						<article class="filter-group"> <header
 							class="card-header"> <a href="#" data-toggle="collapse"
 							data-target="#collapse_2" aria-expanded="true" class="">
-							<h6 class="title">Catégorie</h6>
+							<h6 class="title"><spring:message code="magasin.list.categorie"></spring:message></h6>
 						</a> </header>
 						<div class="filter-content collapse show" id="collapse_2" style="">
 							<div class="card-body">
 								<label class="custom-control custom-checkbox"> <form:checkbox
 										path="ordinateur"  value="1"
 										class="custom-control-input" />
-									<div class="custom-control-label">Ordinateur</div>
+									<div class="custom-control-label"><spring:message code="magasin.list.ordinateur"></spring:message></div>
 								</label> <label class="custom-control custom-checkbox"> <form:checkbox
 										path="telephone"  value="1"
 										class="custom-control-input" />
 
-									<div class="custom-control-label">Téléphone</div>
+									<div class="custom-control-label"><spring:message code="magasin.list.telephone"></spring:message></div>
 								</label> <label class="custom-control custom-checkbox"> <form:checkbox
 										path="electromenager"  value="1"
 										class="custom-control-input" />
 
-									<div class="custom-control-label">Eléctromenager</div>
+									<div class="custom-control-label"><spring:message code="magasin.list.electromenager"></spring:message></div>
 								</label>
 
 
@@ -65,7 +65,7 @@
 						<article class="filter-group"> <header
 							class="card-header"> <a href="#" data-toggle="collapse"
 							data-target="#collapse_4" aria-expanded="true" class="">
-							<h6 class="title">Nom</h6>
+							<h6 class="title"><spring:message code="magasin.list.nom"></spring:message></h6>
 						</a> </header>
 						<div class="filter-content collapse show" id="collapse_4" style="">
 							<div class="card-body">
@@ -85,7 +85,7 @@
 						<article class="filter-group"> <header
 							class="card-header">
 
-						<h6 class="title">Prix</h6>
+						<h6 class="title"><spring:message code="magasin.list.prix"></spring:message></h6>
 						</header>
 						<div class="filter-content collapse show" id="collapse_3" style="">
 							<div class="card-body">
@@ -131,7 +131,7 @@
 						</h5>
 					</div>
 				</c:if>
-				<div class="liste">
+				<div class="liste d-flex flex-wrap col-11">
 					<c:forEach var="tel" items="${telephone }">
 
 						<div class="article col-2">
@@ -169,7 +169,7 @@
 						</h5>
 					</c:if>
 				</div>
-				<div class="liste">
+				<div class="liste d-flex flex-wrap  col-11">
 					<c:forEach var="ordi" items="${ordinateur }">
 
 						<div class="article col-2">
@@ -207,7 +207,7 @@
 						</h5>
 					</c:if>
 				</div>
-				<div class="liste">
+				<div class="liste d-flex flex-wrap  col-11">
 					<c:forEach var="electro" items="${electromenager }">
 
 						<div class="article col-2">
