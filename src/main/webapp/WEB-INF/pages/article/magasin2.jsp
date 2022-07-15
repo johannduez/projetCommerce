@@ -174,7 +174,7 @@
 
 				<div id="pagination" class="d-flex justify-content-center">
 
-					<c:url value="/article/list" var="prev">
+					<c:url value="/article/magasin" var="prev">
 						<c:param name="page" value="${page-1}" />
 					</c:url>
 					<c:if test="${page > 1}">
@@ -187,14 +187,14 @@
 								<span  class="m-2">${i.index}</span>
 							</c:when>
 							<c:otherwise>
-								<c:url value="/article/list" var="url">
+								<c:url value="/article/magasin" var="url">
 									<c:param name="page" value="${i.index}" />
 								</c:url>
 								<a class="m-2" href='<c:out value="${url}" />'>${i.index}</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-					<c:url value="/article/list" var="next">
+					<c:url value="/article/magasin" var="next">
 						<c:param name="page" value="${page + 1}" />
 					</c:url>
 					<c:if test="${page + 1 <= maxPages}">
