@@ -9,10 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Article implements Comparable<Article>{
@@ -25,7 +27,6 @@ public class Article implements Comparable<Article>{
 	private String description;
 	@NotNull
 	private double tarif;
-	@NotEmpty
 	private String image;
 	@NotEmpty
 	private String categorie;
@@ -34,6 +35,9 @@ public class Article implements Comparable<Article>{
 	@Version
 	private int version;
 
+	@Transient
+	private MultipartFile multiPartFile;
+	
 	public Article(String nom, String description, double tarif, String image, String categorie) {
 		super();
 		this.nom = nom;
@@ -49,6 +53,15 @@ public class Article implements Comparable<Article>{
 
 	public String getNom() {
 		return nom;
+	}
+
+	
+	public MultipartFile getMultiPartFile() {
+		return multiPartFile;
+	}
+
+	public void setMultiPartFile(MultipartFile multiPartFile) {
+		this.multiPartFile = multiPartFile;
 	}
 
 	public void setNom(String nom) {

@@ -18,7 +18,7 @@
 	<div class="d-flex flex-column align-items-center mt-4">
 		<div class="col-4 authentification">
 
-			<form:form action="" method="POST" modelAttribute="article">
+			<form:form action="" method="POST" modelAttribute="article"  enctype="multipart/form-data">
 				<!-- enctype="multipart/form-data" -->
 				<div class="form-group mb-2 pb-2 mt-5">
 					<label for="id"><spring:message
@@ -68,10 +68,11 @@
 						</div>
 					</div>
 
-					<input type="text" name="image" id="image"
+					 <input type="hidden" name="image" id="image"
 						class="form-control col-6"
 						value="<c:out value="${article.image}"/>" />
-
+ 
+ 					<td><input type="file" name="multiPartFile"  id="multiPartFile"  accept="image/png, image/jpeg"/></td>
 				</div>
 
 

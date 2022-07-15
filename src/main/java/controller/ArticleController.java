@@ -1,11 +1,15 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -153,7 +157,22 @@ public class ArticleController {
 
 	@PostMapping("/modifier")
 	public String modifier(@RequestParam(name = "id", defaultValue = "1") int id,
-			@ModelAttribute(name = "article") Article article) {
+			@ModelAttribute(name = "article") Article article, HttpServletRequest request) {
+		if (!article.getMultiPartFile().getOriginalFilename().equals("")) {
+			String filePath = request.getServletContext().getRealPath("/");
+			File f1 = new File(filePath + "/resources/img/" + article.getMultiPartFile().getOriginalFilename());
+			try {
+				article.getMultiPartFile().transferTo(f1);
+				article.setImage("/resources/img/" + article.getMultiPartFile().getOriginalFilename());
+			} catch (IllegalStateException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 		artRepository.save(article);
 
 		return "redirect:/article/liste";
@@ -172,16 +191,36 @@ public class ArticleController {
 	}
 
 	@PostMapping("/ajouter")
-	public String inscription(Model model, @Valid @ModelAttribute(name = "article") Article article, BindingResult br)
-			throws ClassNotFoundException, SQLException {
+	public String inscription(Model model, @Valid @ModelAttribute(name = "article") Article article, BindingResult br,
+			HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		System.out.println("inscription");
+		System.out.println(br.hasErrors());
+		System.out.println(br.getAllErrors());
 		if (br.hasErrors())
 			return "/article/ajouterArticle";
-
+		System.out.println("inscription2");
 		Article a = artRepository.findByNom(article.getNom());
 
 		if (a == null) {
-			artRepository.save(article);
-			return "redirect:/article/liste";
+			if (!article.getMultiPartFile().getOriginalFilename().equals("")) {
+				String filePath = request.getServletContext().getRealPath("/");
+				File f1 = new File(filePath + "/resources/img/" + article.getMultiPartFile().getOriginalFilename());
+				try {
+					article.getMultiPartFile().transferTo(f1);
+					article.setImage("/resources/img/" + article.getMultiPartFile().getOriginalFilename());
+				} catch (IllegalStateException e) {
+
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				artRepository.save(article);
+				return "redirect:/article/liste";
+			}
+			else{
+				model.addAttribute("notif", "L'image est obligatoire");
+				return "/article/ajouterArticle";
+			}
 		} else {
 			model.addAttribute("notif", "Nom de cette article deja existant");
 			return "/article/ajouterArticle";
@@ -195,7 +234,7 @@ public class ArticleController {
 		ModelAndView modelAndView = new ModelAndView("/article/magasin2");
 
 		List<Article> articles = ArticleForm.getListArticles(filtre, artRepository);
-		articles.sort((Article a , Article b) -> a.compareTo(b));
+		articles.sort((Article a, Article b) -> a.compareTo(b));
 		session.setAttribute("filtre", filtre);
 		PagedListHolder<Article> pagedListHolder = new PagedListHolder<>(articles);
 		pagedListHolder.setPageSize(8);
@@ -230,8 +269,8 @@ public class ArticleController {
 			articles = ArticleForm.getListArticles(filtre, artRepository);
 
 		}
-		articles.sort((Article a , Article b) -> a.compareTo(b));
-		
+		articles.sort((Article a, Article b) -> a.compareTo(b));
+
 		PagedListHolder<Article> pagedListHolder = new PagedListHolder<>(articles);
 		pagedListHolder.setPageSize(8);
 		modelAndView.addObject("maxPages", pagedListHolder.getPageCount());

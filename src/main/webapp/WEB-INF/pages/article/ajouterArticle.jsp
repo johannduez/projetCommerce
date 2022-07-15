@@ -14,7 +14,7 @@ pageEncoding="ISO-8859-1"%>
 	<div class="d-flex flex-column align-items-center mt-4">
 		<div class="col-4 authentification">
 
-			<form:form method="POST" modelAttribute="article">
+			<form:form method="POST" modelAttribute="article" enctype="multipart/form-data">
 				<div class="form-group mb-2 pb-2">
 					<form:label path="nom"><spring:message code="client.inscription.nom"></spring:message></form:label> 
 					<form:input path="nom" type="text" class="form-control" placeholder="Nom" maxlength="45"/>
@@ -31,9 +31,13 @@ pageEncoding="ISO-8859-1"%>
 					<form:errors path="tarif" cssClass="text-danger"/>
 				</div>
 				<div class="form-group mb-2 pb-2">
-					<form:label path="image"><spring:message code="article.liste.image"></spring:message></form:label> 
-					<form:input path="image" type="text" class="form-control" placeholder="/resources/img/xxx.jpg" maxlength="250"/>
-					<form:errors path="image" cssClass="text-danger"/>
+					<label path="multiPartFile"><spring:message code="article.liste.image"></spring:message></label> 
+					<!--  </br><td><input type="file" name="multiPartFile"  id="multiPartFile"  accept="image/png, image/jpeg"/></td>
+					 -->
+					  </br><td><form:input type="file" path="multiPartFile"  id="multiPartFile"  accept="image/png, image/jpeg"/></td>
+					<form:errors path="multiPartFile" cssClass="text-danger"/>
+					<%-- <form:input path="image" type="text" class="form-control" placeholder="/resources/img/xxx.jpg" maxlength="250"/>
+					<form:errors path="image" cssClass="text-danger"/> --%>
 				</div>
 				<div class="form-group mb-2 pb-2">
 					<form:label path="categorie"><spring:message code="article.liste.categorie"></spring:message></form:label> 
