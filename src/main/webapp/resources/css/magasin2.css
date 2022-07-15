@@ -33,5 +33,5 @@ img {
 	margin-left: 2%;
 }
 .zoom-image {overflow:hidden}
-.zoom-image img {width:150px;height:auto}
+.zoom-image img {width:auto;height:10vw}
 .zoom-image img:hover{width:100%;-webkit-transform:scale(1.3);transform:scale(1.3);-webkit-transition:1s ease-in-out;transition:1s ease-in-out}

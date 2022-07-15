@@ -60,8 +60,6 @@
 										<spring:message code="magasin.list.electromenager"></spring:message>
 									</div>
 								</label>
-
-
 							</div>
 
 						</div>
@@ -167,6 +165,7 @@
 							</div>
 
 						</div>
+						
 					</c:forEach>
 
 
