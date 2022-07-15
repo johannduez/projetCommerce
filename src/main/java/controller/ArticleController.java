@@ -40,7 +40,7 @@ public class ArticleController {
 		this.artRepository = artRepository;
 	}
 
-	@RequestMapping("/magasin")
+	@RequestMapping("/list")
 	public String magasin(Model model) {
 		// Article art1=new Article("Smartphone Apple iPhone 13", "Ecran OLED
 		// Super Retina XDR de 15,5 cm Mémoire de stockage : 512 Go", 799,
@@ -105,7 +105,7 @@ public class ArticleController {
 		return "article/magasin";
 	}
 
-	@PostMapping("/magasin")
+	@PostMapping("/list")
 	public String modifier(@ModelAttribute(name = "filtre") Filtre filtre, Model model) {
 		String nom = "%";
 		if (!filtre.getNom().isEmpty() && !filtre.getNom().equals("")) {
@@ -189,7 +189,7 @@ public class ArticleController {
 
 	}
 
-	@PostMapping("/list")
+	@PostMapping("/magasin")
 	public ModelAndView listOfArticles(@RequestParam(required = false) Integer page,
 			@ModelAttribute(name = "filtre") Filtre filtre, Model model, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView("/article/magasin2");
@@ -216,7 +216,7 @@ public class ArticleController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/magasin")
 	public ModelAndView listOfArticles(@RequestParam(required = false) Integer page, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView("/article/magasin2");
 
